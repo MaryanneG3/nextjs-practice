@@ -7,12 +7,16 @@
     <li>
       <a href="#about-the-project">My first Next.js application</a>
       <ul>
-        <li><a href="#components">Components</a></li>
-         <ul>
+        <li><a href="#apps">Apps</a></li>
+        <ol>
             <li><a href="#counter">Counter</a></li>
-            <li><a href="#jotai-counter">Counter with Jotai</a></li>
+             <ul>
+            <li><a href="#basic-counter">Basic Counter</a></li>
+            <li><a href="#jotai-counter">Basic Counter with Jotai</a></li>
             <li><a href="#customizable-counter">Customizable Counter</a></li>
           </ul>
+            <li><a href="#to-do-list">To do list</a></li>
+          </ol>
         <li><a href="#notes">Notes</a></li>
         <ol>
           <li><a href="#next.js">Next.js</a></li>
@@ -39,28 +43,38 @@ This application serves as practice for me to learn how to build applications us
 [![Typescript][Typescript]][Typescript-url]
 [![Jotai][Jotai]][Jotai-url]
 
-<a id="components"></a>
+<a id="apps"></a>
 
-### Components
+### Apps
 
 <a id="counter"></a>
 
-#### Counter component
+#### Counter
+
+<a id="basic-counter"></a>
+
+##### Basic Counter
 
 - Consists of a display area with the number 0 and a button
 - When the user clicks the button, the number displayed will increment by one
 
 <a id="jotai-counter"></a>
 
-#### Counter using Jotai for state management
+##### Counter using Jotai for state management
 
 - jotai atom is used to manage the state of the count variable
 
 <a id="customizable-counter"></a>
 
-#### Customizable Counter using Jotai for state management
+##### Customizable Counter using Jotai for state management
 
 - Derived atom is used to update the state of the count variable depending on a value entered by the user
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+#### To do list
+
+- to do list built using jotai for state management
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
