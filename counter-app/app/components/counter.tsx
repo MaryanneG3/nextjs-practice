@@ -10,12 +10,12 @@ export default function Counter() {
   };
 
   return (
-    <div className="flex items-center justify-evenly flex-col bg-blue-100 h-[500] w-[500] rounded-2xl">
-      <h1 className="text-3xl">Counter App</h1>
+    <div className="flex items-center justify-evenly flex-col bg-blue-100 h-[300px] w-[300px] rounded-2xl p-4">
+      <h1 className="text-2xl text-center">Counter App - using useState</h1>
       <p className="text-xl">{count}</p>
       <button
         onClick={addCount}
-        className="cursor-pointer bg-blue-300 rounded-md p-[10] text-white hover:bg-blue-400 "
+        className="cursor-pointer bg-blue-300 rounded-md p-[10px] text-white hover:bg-blue-400 "
       >
         Increment by 1
       </button>
