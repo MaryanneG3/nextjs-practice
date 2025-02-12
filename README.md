@@ -34,6 +34,16 @@ This application serves as practice for me to learn how to build applications us
 
 ## Notes
 
+#### Server vs Client components
+
+By default, Next.js converts React components into server-side components. To enable client-side interactivity, such as state management or event handling, you must explicitly declare "use client" in your component. This ensures that the component is rendered on the client side, allowing it to support dynamic behavior.
+
+#### Hot Module Replacement
+
+Changes made to any page in a next app like page.tsx, for instance, can be seen in the browser instantly thanks to Hot Module Replacement.
+
+Hot Module Replacement (HMR) is a feature that allows Next.js (and other modern frameworks) to update modules in a running application without requiring a full page reload. This speeds up development by preserving the application state while making changes.
+
 ### How to create Next app
 
     npx create-next-app@latest
