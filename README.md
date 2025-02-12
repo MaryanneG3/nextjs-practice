@@ -7,9 +7,20 @@
     <li>
       <a href="#about-the-project">My first Next.js application</a>
       <ul>
+        <li><a href="#apps">Apps</a></li>
+         <ul>
+            <li><a href="#counter">Counter</a></li>
+            <li><a href="#jotai-counter">Counter with Jotai</a></li>
+            <li><a href="#customizable-counter">Customizable Counter</a></li>
+          </ul>
         <li><a href="#notes">Notes</a></li>
         <ol>
           <li><a href="#next.js">Next.js</a></li>
+          <ul>
+            <li><a href="#atoms">Atoms</a></li>
+            <li><a href="#derived-atoms">Derived atoms</a></li>
+            <li><a href="#async-atoms">Async atoms</a></li>
+          </ul>
           <li><a href="#jotai">Jotai</a></li>
         </ol>
       </ul>
@@ -28,12 +39,28 @@ This application serves as practice for me to learn how to build applications us
 [![Typescript][Typescript]][Typescript-url]
 [![Jotai][Jotai]][Jotai-url]
 
+<a id="apps"></a>
+
 ### Apps
+
+<a id="counter"></a>
 
 #### Counter App
 
 - Consists of a display area with the number 0 and a button
 - When the user clicks the button, the number displayed will increment by one
+
+<a id="jotai-counter"></a>
+
+#### Counter using Jotai for state management
+
+- jotai atom is used to manage the state of the count variable
+
+<a id="customizable-counter"></a>
+
+#### Customizable Counter using Jotai for state management
+
+- Derived atom is used to update the state of the count variable depending on a value entered by the user
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -63,9 +90,27 @@ Jotai is a minimalistic state management library for React that provides a more 
 
 Unlike Redux, which relies on a centralized store and reducers, Jotai is based on atoms, which are independent units of state that can be composed and derived.
 
-#### atoms
+<a id="atoms"></a>
+
+#### Atoms
 
 An atom is a unit of state in Jotai. Think of it as a piece of state that can be read and written to directly. Atoms are self-contained and do not require a global store.
+
+<a id="derived-atoms"></a>
+
+#### Derived atoms
+
+Derived atoms are atoms whose values are calculated from one or more other atoms. They are read-only atoms that depend on other atoms.
+
+Derived atoms are useful when you need to compute values dynamically based on other atoms.
+
+<a id="async-atoms"></a>
+
+#### Async atoms
+
+Async atoms allow you to work with asynchronous data, such as fetching data from an API. These atoms return a promise, and the state is resolved when the promise is completed.
+
+Useful for managing asynchronous state like loading, data, or error states.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
