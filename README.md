@@ -7,7 +7,7 @@
     <li>
       <a href="#about-the-project">My first Next.js application</a>
       <ul>
-        <li><a href="#apps">Apps</a></li>
+        <li><a href="#components">Components</a></li>
          <ul>
             <li><a href="#counter">Counter</a></li>
             <li><a href="#jotai-counter">Counter with Jotai</a></li>
@@ -39,13 +39,13 @@ This application serves as practice for me to learn how to build applications us
 [![Typescript][Typescript]][Typescript-url]
 [![Jotai][Jotai]][Jotai-url]
 
-<a id="apps"></a>
+<a id="components"></a>
 
-### Apps
+### Components
 
 <a id="counter"></a>
 
-#### Counter App
+#### Counter component
 
 - Consists of a display area with the number 0 and a button
 - When the user clicks the button, the number displayed will increment by one
