@@ -2,7 +2,7 @@
 
 import { atom, useAtom } from "jotai";
 
-const countAtom = atom(0);
+const countAtom = atom<number>(0);
 
 export default function JotaiCounter() {
   const [count, setCount] = useAtom(countAtom);

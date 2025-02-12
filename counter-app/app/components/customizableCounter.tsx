@@ -2,8 +2,8 @@
 
 import { atom, useAtom } from "jotai";
 
-const countAtom = atom(0);
-const incrementAtom = atom(0);
+const countAtom = atom<number>(0);
+const incrementAtom = atom<number>(0);
 
 export default function CustomizableCounter() {
   const [count, setCount] = useAtom(countAtom);
