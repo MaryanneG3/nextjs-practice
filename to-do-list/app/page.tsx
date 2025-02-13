@@ -1,3 +1,11 @@
+"use client";
+
+import ToDoList from "./components/toDoList";
+
 export default function Home() {
-  return <div> Hello World</div>;
+  return (
+    <div>
+      <ToDoList />
+    </div>
+  );
 }
