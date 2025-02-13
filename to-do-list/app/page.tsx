@@ -1,10 +1,8 @@
-"use client";
-
 import ToDoList from "./components/toDoList";
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center h-screen">
       <ToDoList />
     </div>
   );
