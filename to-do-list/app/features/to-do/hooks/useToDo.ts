@@ -4,6 +4,7 @@ import {
   showListTitleAtom,
   listTitleAtom,
   tasksAtom,
+  isEditingTitleAtom,
 } from "../states/toDoAtoms";
 
 export const useTodo = () => {
@@ -11,6 +12,7 @@ export const useTodo = () => {
   const [showListTitle, setShowListTitle] = useAtom(showListTitleAtom);
   const [listTitle, setListTitle] = useAtom(listTitleAtom);
   const [tasks, setTasks] = useAtom(tasksAtom);
+  const [isEditingTitle, setIsEditingTitle] = useAtom(isEditingTitleAtom);
 
   return {
     showList,
@@ -21,5 +23,7 @@ export const useTodo = () => {
     setListTitle,
     tasks,
     setTasks,
+    isEditingTitle,
+    setIsEditingTitle,
   };
 };
