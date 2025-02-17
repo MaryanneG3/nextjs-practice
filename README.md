@@ -128,6 +128,8 @@ Useful for managing asynchronous state like loading, data, or error states.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- npm install @tanstack/react-query -->
+
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=blue
