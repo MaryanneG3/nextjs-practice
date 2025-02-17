@@ -17,6 +17,10 @@ export default function ToDoList() {
     setTasks,
     isEditingTitle,
     setIsEditingTitle,
+    editingTaskIndex,
+    setEditingTaskIndex,
+    editingTaskValue,
+    setEditingTaskValue,
   } = useTodo();
 
   const [checkedTasks, setCheckedTasks] = useAtom(checkedTaskAtom);
@@ -50,6 +54,25 @@ export default function ToDoList() {
     setCheckedTasks(newCheckedTasks);
   };
 
+  const handleTaskEdit = (index) => {
+    setEditingTaskIndex(index);
+    setEditingTaskValue(tasks[index]);
+  };
+
+  const handleTaskEditInput = (e) => {
+    setEditingTaskValue(e.target.value);
+  };
+
+  const handleTaskEditSubmit = (e) => {
+    if (e.key === "Enter") {
+      const newTasks = [...tasks];
+      newTasks[editingTaskIndex] = editingTaskValue;
+      setTasks(newTasks);
+      setEditingTaskIndex(null);
+      setEditingTaskValue("");
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center items-center h-[300px] w-[300px] border rounded-lg p-[10]">
       {!showList ? (
@@ -68,7 +91,7 @@ export default function ToDoList() {
               value={listTitle}
               onChange={(e) => setListTitle(e.target.value)}
               onKeyDown={handleListTitleInput}
-              className="w-[80%] text-center rounded-lg p-[5] focus:border-none"
+              className="w-[80%] text-center rounded-lg p-[5] focus:outline-none"
             />
           ) : (
             <p onClick={() => setIsEditingTitle(true)}>{listTitle}</p>
@@ -84,13 +107,24 @@ export default function ToDoList() {
                   type="checkbox"
                   checked={checkedTasks[index]}
                   onChange={() => handleCheckboxChange(index)}
-                  className="focus:border-none"
                 />
-                <p>{task}</p>
+                {editingTaskIndex === index ? (
+                  <input
+                    value={editingTaskValue}
+                    onChange={handleTaskEditInput}
+                    onKeyDown={handleTaskEditSubmit}
+                  />
+                ) : (
+                  <p onClick={() => handleTaskEdit(index)}>{task}</p>
+                )}
               </div>
             ))}
           </div>
-          <input placeholder="+ add new task" onKeyDown={handleTaskInput} />
+          <input
+            placeholder="+ add new task"
+            onKeyDown={handleTaskInput}
+            className="w-[80%] text-center rounded-lg p-[5] focus:outline-none"
+          />
         </div>
       )}
     </div>

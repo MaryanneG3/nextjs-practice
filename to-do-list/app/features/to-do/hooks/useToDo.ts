@@ -5,6 +5,8 @@ import {
   listTitleAtom,
   tasksAtom,
   isEditingTitleAtom,
+  editingTaskIndexAtom,
+  editingTaskValueAtom,
 } from "../states/toDoAtoms";
 
 export const useTodo = () => {
@@ -13,6 +15,8 @@ export const useTodo = () => {
   const [listTitle, setListTitle] = useAtom(listTitleAtom);
   const [tasks, setTasks] = useAtom(tasksAtom);
   const [isEditingTitle, setIsEditingTitle] = useAtom(isEditingTitleAtom);
+  const [editingTaskIndex, setEditingTaskIndex] = useAtom(editingTaskIndexAtom);
+  const [editingTaskValue, setEditingTaskValue] = useAtom(editingTaskValueAtom);
 
   return {
     showList,
@@ -25,5 +29,9 @@ export const useTodo = () => {
     setTasks,
     isEditingTitle,
     setIsEditingTitle,
+    editingTaskIndex,
+    setEditingTaskIndex,
+    editingTaskValue,
+    setEditingTaskValue,
   };
 };
