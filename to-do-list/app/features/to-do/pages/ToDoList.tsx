@@ -74,14 +74,14 @@ export default function ToDoList() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-[300px] w-[300px] border rounded-lg p-[10]">
+    <div className="flex flex-col justify-center items-center h-[650px] w-[30%]  border rounded-2xl mr-20 ml-20 shadow-lg shadow-purple-100">
       {!showList ? (
         <button
           onClick={() => {
             setShowList(true);
           }}
         >
-          + Create a new to do list
+          + Create a new to do list!
         </button>
       ) : (
         <div className="flex flex-col justify-center items-center h-full w-full gap-4">
@@ -97,7 +97,7 @@ export default function ToDoList() {
             <p onClick={() => setIsEditingTitle(true)}>{listTitle}</p>
           )}
 
-          <div className="flex flex-col justify-start items-start bg-pink-50 w-[80%] h-[200px] p-[20] rounded-lg overflow-y-scroll">
+          <div className="flex flex-col justify-start items-start bg-purple-50 w-[80%] h-[80%] p-[20] rounded-lg overflow-y-scroll">
             {tasks.map((task, index) => (
               <div
                 key={index}

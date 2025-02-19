@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## spline
 
-## Getting Started
+### packages and libraries required to use Spline
 
-First, run the development server:
+    npm install @splinetool/react-spline
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### how to embed spline model
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+import Spline from '@splinetool/react-spline';
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+export default function Home(){return <Spline scene=enter scene from spline /> }
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## next.js App Router API conventions
 
-## Learn More
+### What is the App Router?
 
-To learn more about Next.js, take a look at the following resources:
+The App Router in Next.js is a system that helps you define and manage the routes (URLs) in your application. It uses a file-based routing system, which means the structure of your files and folders determines the routes in your app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Basic Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+In Next.js, you create an app directory at the root of your project. Inside this directory, you organize your routes using folders and files.
 
-## Deploy on Vercel
+app/
+├── dashboard/
+│ ├── layout.js
+│ └── page.js
+└── settings/
+├── layout.js
+└── page.js
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+In this example:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The dashboard folder represents the /dashboard route.
+The settings folder represents the /settings route.
+Each folder contains a layout.js file for the common layout and a page.js file for the specific page content.
+
+Next.js does not use export default function handler() for API routes. Instead, it follows a different convention.
+
+### API conventions
+
+You can handle different HTTP methods by exporting functions named after the methods (e.g., GET, POST):
+
+// app/api/user/route.js
+export async function GET(request)
+export async function POST(request)
