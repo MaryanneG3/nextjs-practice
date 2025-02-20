@@ -16,7 +16,7 @@ export default function Chatbot() {
     setSessionId(`session-${Date.now()}`);
   }, []);
 
-  const handleSubmitUserResponse = async (userResponse) => {
+  const handleSubmitUserResponse = async (userResponse: string) => {
     if (!userResponse.trim()) {
       alert("Please provide a valid response.");
       return;
