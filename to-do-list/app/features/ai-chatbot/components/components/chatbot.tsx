@@ -1,6 +1,7 @@
 "use client";
 
 import { atom, useAtom } from "jotai";
+import { useEffect, useState } from "react";
 
 const responseAtom = atom<{ type: string; text: string }[]>([
   { type: "Octo", text: "Hello, I'm Octo! How can I help you?" },
@@ -8,6 +9,12 @@ const responseAtom = atom<{ type: string; text: string }[]>([
 
 export default function Chatbot() {
   const [responses, setResponses] = useAtom(responseAtom);
+  const [sessionId, setSessionId] = useState("");
+
+  useEffect(() => {
+    // Generate a unique session ID when the component mounts
+    setSessionId(`session-${Date.now()}`);
+  }, []);
 
   const handleSubmitUserResponse = async (userResponse) => {
     if (!userResponse.trim()) {
@@ -25,7 +32,7 @@ export default function Chatbot() {
       const response = await fetch("/api/octo-chatbot/process-response", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userResponse }),
+        body: JSON.stringify({ userResponse, sessionId }),
       });
 
       // Check if the response is not OK
