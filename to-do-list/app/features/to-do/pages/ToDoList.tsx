@@ -74,12 +74,13 @@ export default function ToDoList() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-[650px] w-[30%]  border rounded-2xl mr-20 ml-20 shadow-lg shadow-purple-100">
+    <div className="checkerboard flex flex-col justify-center items-center h-[650px] w-[30%]  border rounded-2xl mr-20 ml-20 shadow-lg shadow-purple-100">
       {!showList ? (
         <button
           onClick={() => {
             setShowList(true);
           }}
+          className="text-purple-700 hover:text-purple-850 hover:text-xl"
         >
           + Create a new to do list!
         </button>
@@ -91,13 +92,18 @@ export default function ToDoList() {
               value={listTitle}
               onChange={(e) => setListTitle(e.target.value)}
               onKeyDown={handleListTitleInput}
-              className="w-[80%] text-center rounded-lg p-[5] focus:outline-none"
+              className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300"
             />
           ) : (
-            <p onClick={() => setIsEditingTitle(true)}>{listTitle}</p>
+            <p
+              onClick={() => setIsEditingTitle(true)}
+              className="text-lg text-white text-fuchsia-700 bg-white w-[80%] text-center rounded-lg p-[5] shadow-lg shadow-purple-300"
+            >
+              {listTitle}
+            </p>
           )}
 
-          <div className="flex flex-col justify-start items-start bg-purple-50 w-[80%] h-[80%] p-[20] rounded-lg overflow-y-scroll">
+          <div className="flex flex-col justify-start items-start bg-purple-50 w-[80%] h-[80%] p-[20] rounded-lg overflow-y-scroll shadow-lg shadow-purple-300">
             {tasks.map((task, index) => (
               <div
                 key={index}
@@ -123,7 +129,7 @@ export default function ToDoList() {
           <input
             placeholder="+ add new task"
             onKeyDown={handleTaskInput}
-            className="w-[80%] text-center rounded-lg p-[5] focus:outline-none"
+            className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300"
           />
         </div>
       )}
