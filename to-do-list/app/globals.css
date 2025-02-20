@@ -19,3 +19,29 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer utilities {
+  /* Scrollbar width */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  /* Scrollbar track */
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #fffeff;
+    border: 1px solid #d9b3ff;
+    border-radius: 10px;
+  }
+
+  /* Scrollbar thumb */
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e7d0fcf7;
+    border-radius: 10px;
+    margin: 5px;
+  }
+
+  /* On hover */
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #d8b5f9;
+  }
+}
