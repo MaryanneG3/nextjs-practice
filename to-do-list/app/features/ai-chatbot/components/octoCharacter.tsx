@@ -94,11 +94,11 @@ export default function DraggableOctoCharacter() {
 
       <h1 className="text-center"> [ x ]</h1>
 
-      <div className="w-[255px] h-[340px] spline-container">
+      <div className="w-[255px] h-[340px] m-2 spline-container">
         <Spline
           scene="https://prod.spline.design/BMBMUzzbIMpRYGl8/scene.splinecode"
-          width={250}
-          height={300}
+          width={200}
+          height={250}
         />
       </div>
     </div>

@@ -64,3 +64,16 @@ The e.clientX and e.clientY properties are part of the MouseEvent interface in J
     - e.clientX: Represents the horizontal (X) coordinate of the mouse pointer relative to the viewport (the visible part of the browser window), excluding any scroll offset. It gives the position of the mouse pointer on the X-axis.
 
     - e.clientY: Represents the vertical (Y) coordinate of the mouse pointer relative to the viewport, similar to clientX, but on the Y-axis.
+
+## e.target instanceof HTMLElement &&
+
+This checks if the target of the mouse event (e.target) is an instance of HTMLElement.
+e.target refers to the specific HTML element that triggered the onMouseDown event (i.e., the element the user clicked on).
+This ensures that the code only operates when the click is on a valid HTML element, not something else like a text node.
+e.target.closest(".spline-container"):
+
+## e.target.closest(".spline-container")
+
+The .closest() method searches for the closest ancestor element (including the target itself) that matches the given CSS selector (.spline-container).
+If e.target or any of its parent elements has the spline-container class, .closest() will return the first matching element, otherwise null.
+So, if the click happens inside the .spline-container (which wraps the Spline character), this condition will be true.
