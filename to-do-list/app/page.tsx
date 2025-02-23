@@ -1,5 +1,5 @@
 import ToDoList from "./features/to-do/pages/ToDoList";
-import Octo from "./features/ai-chatbot/components/components/octo";
+import Octo from "./features/ai-chatbot/octo";
 
 export default function Home() {
   return (

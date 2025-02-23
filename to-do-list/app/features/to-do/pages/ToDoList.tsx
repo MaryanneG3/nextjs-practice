@@ -92,44 +92,55 @@ export default function ToDoList() {
               value={listTitle}
               onChange={(e) => setListTitle(e.target.value)}
               onKeyDown={handleListTitleInput}
-              className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300"
+              className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300 border border-purple-100"
             />
           ) : (
             <p
               onClick={() => setIsEditingTitle(true)}
-              className="text-lg text-white text-fuchsia-700 bg-white w-[80%] text-center rounded-lg p-[5] shadow-lg shadow-purple-300"
+              className="text-lg text-white text-fuchsia-700 bg-white w-[80%] text-center rounded-lg p-[5] shadow-lg shadow-purple-300 "
             >
               {listTitle}
             </p>
           )}
-
-          <div className="flex flex-col justify-start items-start bg-purple-50 w-[80%] h-[80%] p-[20] rounded-lg overflow-y-scroll shadow-lg shadow-purple-300">
-            {tasks.map((task, index) => (
-              <div
-                key={index}
-                className="flex flex-row justify-center items-center gap-5 p-[5]"
-              >
-                <input
-                  type="checkbox"
-                  checked={checkedTasks[index]}
-                  onChange={() => handleCheckboxChange(index)}
-                />
-                {editingTaskIndex === index ? (
-                  <input
-                    value={editingTaskValue}
-                    onChange={handleTaskEditInput}
-                    onKeyDown={handleTaskEditSubmit}
-                  />
-                ) : (
-                  <p onClick={() => handleTaskEdit(index)}>{task}</p>
-                )}
+          <div className="border border-purple-100 bg-white rounded-lg w-[80%] h-[80%]  p-6">
+            <div
+              id="scrollbarContainer"
+              className="w-[100%] h-[100%] overflow-y-scroll custom-scrollbar"
+            >
+              <div className="flex flex-col justify-start items-start w-[100%] h-[100%]">
+                {tasks.map((task, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-row justify-start items-start gap-5 mb-4"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={checkedTasks[index]}
+                      onChange={() => handleCheckboxChange(index)}
+                    />
+                    {editingTaskIndex === index ? (
+                      <input
+                        value={editingTaskValue}
+                        onChange={handleTaskEditInput}
+                        onKeyDown={handleTaskEditSubmit}
+                      />
+                    ) : (
+                      <div
+                        onClick={() => handleTaskEdit(index)}
+                        className="text-sm max-w-[80%] w-fit break-words"
+                      >
+                        {task}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
           <input
             placeholder="+ add new task"
             onKeyDown={handleTaskInput}
-            className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300"
+            className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300 border border-purple-100"
           />
         </div>
       )}
