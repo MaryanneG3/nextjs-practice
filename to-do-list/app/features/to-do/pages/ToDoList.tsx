@@ -92,12 +92,12 @@ export default function ToDoList() {
               value={listTitle}
               onChange={(e) => setListTitle(e.target.value)}
               onKeyDown={handleListTitleInput}
-              className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300"
+              className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300 border border-purple-100"
             />
           ) : (
             <p
               onClick={() => setIsEditingTitle(true)}
-              className="text-lg text-white text-fuchsia-700 bg-white w-[80%] text-center rounded-lg p-[5] shadow-lg shadow-purple-300"
+              className="text-lg text-white text-fuchsia-700 bg-white w-[80%] text-center rounded-lg p-[5] shadow-lg shadow-purple-300 "
             >
               {listTitle}
             </p>
@@ -127,7 +127,7 @@ export default function ToDoList() {
                     ) : (
                       <div
                         onClick={() => handleTaskEdit(index)}
-                        className="text-sm max-w-[80%] w-fit break-words "
+                        className="text-sm max-w-[80%] w-fit break-words"
                       >
                         {task}
                       </div>
@@ -140,7 +140,7 @@ export default function ToDoList() {
           <input
             placeholder="+ add new task"
             onKeyDown={handleTaskInput}
-            className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300"
+            className="w-[80%] text-center rounded-lg p-[5] focus:outline-none shadow-lg shadow-purple-300 border border-purple-100"
           />
         </div>
       )}

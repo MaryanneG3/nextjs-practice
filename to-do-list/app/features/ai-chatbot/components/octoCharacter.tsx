@@ -2,6 +2,7 @@
 
 import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
+import { CircleDotDashed, Eye, EyeClosed } from "lucide-react";
 // import Image from "next/image";
 
 import dynamic from "next/dynamic";
@@ -19,6 +20,7 @@ const positionAtom = atom<{ x: number; y: number }>({
   x: 0,
   y: window.innerHeight - 400,
 });
+const isHiddenAtom = atom<boolean>(false);
 
 export default function DraggableOctoCharacter() {
   const [position, setPosition] = useAtom(positionAtom);
@@ -31,6 +33,7 @@ export default function DraggableOctoCharacter() {
     x: 0,
     y: window.innerHeight - 400,
   });
+  const [isHidden, setIsHidden] = useAtom(isHiddenAtom);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     isDragging.current = true;
@@ -79,9 +82,13 @@ export default function DraggableOctoCharacter() {
     };
   }, [setPosition]);
 
+  const toggleOcto = () => {
+    setIsHidden(!isHidden);
+  };
+
   return (
     <div
-      className="fixed w-50 h-50 flex flex-col justify-start items-center cursor-grab active:cursor-grabbing "
+      className="fixed w-50 h-50 flex flex-row justify-center items-center cursor-grab active:cursor-grabbing "
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
       onMouseDown={handleMouseDown}
     >
@@ -92,14 +99,31 @@ export default function DraggableOctoCharacter() {
         height={50}
       /> */}
 
-      <h1 className="text-center"> [ x ]</h1>
+      {/* {!isHidden ? (
+        
+      ) : (
+        <p>Click Eye icon to see Octo!</p>
+      )} */}
 
-      <div className="w-[255px] h-[340px] m-2 spline-container">
-        <Spline
-          scene="https://prod.spline.design/BMBMUzzbIMpRYGl8/scene.splinecode"
-          width={200}
-          height={250}
-        />
+      <div className="flex flex-col items-center gap-5 m-2 hover:cursor-pointer">
+        <CircleDotDashed />
+        {!isHidden ? (
+          <div className="flex flex-row items-center gap-5">
+            <div className="w-[255px] h-[340px] m-1 spline-container">
+              <Spline
+                scene="https://prod.spline.design/BMBMUzzbIMpRYGl8/scene.splinecode"
+                width={200}
+                height={250}
+              />
+            </div>
+            <Eye onClick={toggleOcto} className="hover:cursor-pointer" />
+          </div>
+        ) : (
+          <div className="flex flex-row items-center gap-5">
+            <p>Click Eye icon to see Octo!</p>
+            <EyeClosed onClick={toggleOcto} className="hover:cursor-pointer" />
+          </div>
+        )}
       </div>
     </div>
   );
