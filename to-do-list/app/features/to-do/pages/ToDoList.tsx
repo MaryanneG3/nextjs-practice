@@ -3,7 +3,7 @@
 import { useTodo } from "../hooks/useToDo";
 import { useAtom } from "jotai";
 import { checkedTaskAtom } from "../states/checkBoxAtoms";
-import { useEffect } from "react";
+import { useEffect, KeyboardEvent, ChangeEvent } from "react";
 
 export default function ToDoList() {
   const {
@@ -29,42 +29,40 @@ export default function ToDoList() {
     if (checkedTasks.length === 0) {
       setCheckedTasks(new Array(tasks.length).fill(false));
     }
-  }, [setCheckedTasks]);
+  }, [tasks.length, checkedTasks.length, setCheckedTasks]);
 
-  const handleListTitleInput = (e) => {
+  const handleListTitleInput = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      setListTitle(e.target.value);
       setShowListTitle(true);
       setIsEditingTitle(false);
     }
   };
 
-  const handleTaskInput = (e) => {
-    if (e.key === "Enter") {
-      setTasks([...tasks, e.target.value]);
+  const handleTaskInput = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && e.currentTarget.value.trim() !== "") {
+      setTasks([...tasks, e.currentTarget.value]);
       setCheckedTasks([...checkedTasks, false]);
-      e.target.value = "";
+      e.currentTarget.value = "";
     }
   };
 
   const handleCheckboxChange = (index: number) => {
     const newCheckedTasks = [...checkedTasks];
     newCheckedTasks[index] = !newCheckedTasks[index];
-    console.log(`Index ${index}: ${newCheckedTasks[index]}`);
     setCheckedTasks(newCheckedTasks);
   };
 
-  const handleTaskEdit = (index) => {
+  const handleTaskEdit = (index: number) => {
     setEditingTaskIndex(index);
     setEditingTaskValue(tasks[index]);
   };
 
-  const handleTaskEditInput = (e) => {
+  const handleTaskEditInput = (e: ChangeEvent<HTMLInputElement>) => {
     setEditingTaskValue(e.target.value);
   };
 
-  const handleTaskEditSubmit = (e) => {
-    if (e.key === "Enter") {
+  const handleTaskEditSubmit = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && editingTaskIndex !== null) {
       const newTasks = [...tasks];
       newTasks[editingTaskIndex] = editingTaskValue;
       setTasks(newTasks);
@@ -74,12 +72,10 @@ export default function ToDoList() {
   };
 
   return (
-    <div className="checkerboard flex flex-col justify-center items-center h-[650px] w-[30%]  border rounded-2xl mr-20 ml-20 shadow-lg shadow-purple-100">
+    <div className="checkerboard flex flex-col justify-center items-center h-[650px] w-[30%] border rounded-2xl mr-20 ml-20 shadow-lg shadow-purple-100">
       {!showList ? (
         <button
-          onClick={() => {
-            setShowList(true);
-          }}
+          onClick={() => setShowList(true)}
           className="text-purple-700 hover:text-purple-850 hover:text-xl"
         >
           + Create a new to do list!
@@ -97,12 +93,12 @@ export default function ToDoList() {
           ) : (
             <p
               onClick={() => setIsEditingTitle(true)}
-              className="text-lg text-white text-fuchsia-700 bg-white w-[80%] text-center rounded-lg p-[5] shadow-lg shadow-purple-300 "
+              className="text-lg  text-fuchsia-700 bg-white w-[80%] text-center rounded-lg p-[5] shadow-lg shadow-purple-300"
             >
               {listTitle}
             </p>
           )}
-          <div className="border border-purple-100 bg-white rounded-lg w-[80%] h-[80%]  p-6">
+          <div className="border border-purple-100 bg-white rounded-lg w-[80%] h-[80%] p-6">
             <div
               id="scrollbarContainer"
               className="w-[100%] h-[100%] overflow-y-scroll custom-scrollbar"
@@ -115,7 +111,7 @@ export default function ToDoList() {
                   >
                     <input
                       type="checkbox"
-                      checked={checkedTasks[index]}
+                      checked={checkedTasks[index] || false}
                       onChange={() => handleCheckboxChange(index)}
                     />
                     {editingTaskIndex === index ? (
