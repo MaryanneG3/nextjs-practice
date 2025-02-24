@@ -36,7 +36,7 @@
 
 ## About The Project
 
-This application serves as practice for me to learn how to build applications using the following technologies:
+This application serves as practice to learn how to build applications using the following technologies:
 
 [![Next][Next.js]][Next-url]
 [![Tailwind][Tailwind]][Tailwind-url]
