@@ -105,10 +105,11 @@ export default function DraggableOctoCharacter() {
         <p>Click Eye icon to see Octo!</p>
       )} */}
 
-      <div className="flex flex-col items-center gap-5 m-2 hover:cursor-pointer">
+      <div className="flex flex-col items-center gap-5 m-2 hover:cursor-pointer w-80">
         <CircleDotDashed />
         {!isHidden ? (
-          <div className="flex flex-row items-center gap-5">
+          <div className="flex flex-col items-center justify-center gap-5">
+            <Eye onClick={toggleOcto} className="hover:cursor-pointer" />
             <div className="w-[255px] h-[340px] m-1 spline-container">
               <Spline
                 scene="https://prod.spline.design/BMBMUzzbIMpRYGl8/scene.splinecode"
@@ -116,12 +117,11 @@ export default function DraggableOctoCharacter() {
                 height={250}
               />
             </div>
-            <Eye onClick={toggleOcto} className="hover:cursor-pointer" />
           </div>
         ) : (
-          <div className="flex flex-row items-center gap-5">
-            <p>Click Eye icon to see Octo!</p>
+          <div className="flex flex-col items-center justify-center gap-5">
             <EyeClosed onClick={toggleOcto} className="hover:cursor-pointer" />
+            <p>Click Eye icon to see Octo!</p>
           </div>
         )}
       </div>
