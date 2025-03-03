@@ -8,11 +8,13 @@ function ParallaxScrolling2() {
   const sectionsRef = useRef([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const sections = [...Array(totalSections).keys()];
+
   useEffect(() => {
     sectionsRef.current = sectionsRef.current.slice(0, totalSections);
   }, []);
 
-  const scrollToSection = (index) => {
+  const scrollToSection = (index: number) => {
     if (index >= 0 && index < totalSections && sectionsRef.current[index]) {
       sectionsRef.current[index].scrollIntoView({ behavior: "smooth" });
       setTimeout(() => setCurrentIndex(index), 500);
@@ -41,41 +43,62 @@ function ParallaxScrolling2() {
         style={{ backgroundImage: 'url("/images/layer4.jpg")' }}
       >
         <motion.div
-          className="absolute flex flex-row items-center gap-6"
+          className="w-[70%] flex flex-row justify-around items-center gap-2"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.img
-            src="/images/midground.png"
-            alt="Image 1"
-            className="w-auto h-64 rounded-lg shadow-lg"
+          <motion.div
+            className="flex flex-col justify-center items-center gap-4 relative z-0 w-auto h-[300px] rounded-3xl bg-black opacity-5 p-2"
             variants={{
               hidden: { opacity: 0, y: 100 },
               visible: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 1.4, ease: "easeOut" }}
-          />
-          <motion.img
-            src="/images/midground.png"
-            alt="Image 2"
-            className="w-auto h-64 rounded-lg shadow-lg"
-            variants={{
-              hidden: { opacity: 0, y: 100 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-          />
-          <motion.img
-            src="/images/midground.png"
-            alt="Image 3"
-            className="w-auto h-64 rounded-lg shadow-lg"
+          >
+            <div className="relative z-10 w-[80%] h-[70%] flex justify-center items-center rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-purple-900 to-black">
+              <motion.img
+                src="/images/midground.png"
+                alt="Image 1"
+                className=" w-[100%] h-auto rounded-lg overflow-hidden "
+              />
+            </div>
+            <h2 className="text-purple-300">Child</h2>
+          </motion.div>
+          <motion.div
+            className="flex flex-col justify-center items-center gap-4 relative z-0 w-auto h-[300px] rounded-3xl bg-black opacity-5 p-2"
             variants={{
               hidden: { opacity: 0, y: 100 },
               visible: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 1.4, ease: "easeOut" }}
-          />
+          >
+            <div className="relative z-10 w-[80%] h-[70%] flex justify-center items-center rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-purple-900 to-black">
+              <motion.img
+                src="/images/midground.png"
+                alt="Image 1"
+                className=" w-[100%] h-auto rounded-lg overflow-hidden "
+              />
+            </div>
+            <h2 className="text-purple-300">Parent</h2>
+          </motion.div>
+          <motion.div
+            className="flex flex-col justify-center items-center gap-4 relative z-0 w-auto h-[300px] rounded-3xl bg-black opacity-5 p-2"
+            variants={{
+              hidden: { opacity: 0, y: 100 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 1.4, ease: "easeOut" }}
+          >
+            <div className="relative z-10 w-[80%] h-[70%] flex justify-center items-center rounded-tl-xl rounded-tr-xl bg-gradient-to-b from-purple-900 to-black">
+              <motion.img
+                src="/images/midground.png"
+                alt="Image 1"
+                className=" w-[100%] h-auto rounded-lg overflow-hidden "
+              />
+            </div>
+            <h2 className="text-purple-300">Educator</h2>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -113,6 +136,24 @@ function ParallaxScrolling2() {
         >
           Previous
         </button>
+
+        {sections.map((index) => {
+          return (
+            <button
+              key={index}
+              onClick={() => scrollToSection(index)}
+              disabled={currentIndex === index}
+              className={`px-4 py-2 rounded-lg bg-gray-700 text-white ${
+                currentIndex === index
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-gray-900"
+              }`}
+            >
+              {index + 1}
+            </button>
+          );
+        })}
+
         <button
           onClick={() => scrollToSection(currentIndex + 1)}
           disabled={currentIndex >= totalSections - 1}
