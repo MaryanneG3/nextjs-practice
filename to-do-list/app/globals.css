@@ -63,3 +63,13 @@ body {
   background-size: 45px 45px;
   animation: checkerboard 5s;
 }
+
+/* .navbackground {
+  background-color: linear-gradient(
+    to right,
+    #ff7e5f,
+    #feb47b,
+    #86a8e7,
+    #7f7fd5
+  );
+} */
