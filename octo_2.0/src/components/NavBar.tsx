@@ -53,8 +53,8 @@ function NavBar() {
               id="dropdownMenu"
               className="absolute z-1000 top-[85px] w-full bg-pink-50 flex flex-col"
             >
-              <Link id="navlink" href="/parallax">
-                To do list
+              <Link id="navlink" href="/ai-chatbot">
+                Octo Chatbot
               </Link>
               <Link id="navlink" href="/simple-parallax">
                 Simple Parallax
